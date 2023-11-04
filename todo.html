@@ -54,9 +54,26 @@
 			// 	$(this).removeClass("active");
 			// 	$(this).attr("aria-current", "false");
 			// });
-			$(".todo-item").on("mouseleave", function () {
-				$(this).toggleClass("active");
+			window.addEventListener("mouseover", (event) => {
+				if (event.target.classList.contains("todo-item")) {
+					event.target.classList.add("active");
+					event.target.setAttribute("aria-current", "true");
+					console.log("hovered");
+				}
 			});
+			window.addEventListener("mouseleave", (event) => {
+				if (event.target.classList.contains("todo-item")) {
+					event.target.classList.remove("active");
+					event.target.setAttribute("aria-current", "false");
+					console.log("unhovered");
+				}
+			});
+
+			// todoItems.addEventntListener("mouseleave", function () {
+			// todoItems.removeClass("active");
+			// todoItems.attr("aria-current", "false");
+			// console.log("unhovered");
+			// });
 		</script>
 		<script>
 			function CreateAlert(type, message) {
