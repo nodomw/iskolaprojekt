@@ -63,7 +63,13 @@
 					// console.log("unhovered");
 				}
 			});
-			//TODO: make the close button delete the current element
+			window.addEventListener("click", (event) => {
+				if (event.target.classList.contains("btn-todo")) {
+					event.target.parentElement.remove();
+					// console.log("clicked");
+				}
+			});
+			// TODO: style the close button to be more bootstrap-y
 		</script>
 		<script> // functions n stuff
 			function CreateAlert(type, message) {
@@ -78,7 +84,7 @@
 					return;
 				}
 				// CreateAlert("success", "✅📈")
-				$(".todo-items").append('<li class="list-group-item todo-item">' + todo + '<button class="btn btn-danger btn-close" aria-label="Close" role="button"></button> </li>');
+				$(".todo-items").append('<li class="list-group-item todo-item">' + todo + '<button class="btn btn-danger btn-close btn-todo" aria-label="Close" role="button"></button> </li>');
 			}
 
 			function Remove() {
