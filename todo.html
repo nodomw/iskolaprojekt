@@ -44,16 +44,6 @@
 			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 			crossorigin="anonymous"></script>
 		<script>
-			//TODO: make this work
-
-			// OLD CODE: (didnt work either)
-			// $("li.todo-item").hover(function () {
-			// 	$(this).addClass("active");
-			// 	$(this).attr("aria-current", "true");
-			// }, function () {
-			// 	$(this).removeClass("active");
-			// 	$(this).attr("aria-current", "false");
-			// });
 			window.addEventListener("mouseover", (event) => {
 				if (event.target.classList.contains("todo-item")) {
 					event.target.classList.add("active");
@@ -61,19 +51,15 @@
 					console.log("hovered");
 				}
 			});
+
+			//TODO: make this work
 			window.addEventListener("mouseleave", (event) => {
 				if (event.target.classList.contains("todo-item")) {
-					event.target.classList.remove("active");
-					event.target.setAttribute("aria-current", "false");
+					// event.target.classList.remove("active");
+					// event.target.setAttribute("aria-current", "false");
 					console.log("unhovered");
 				}
 			});
-
-			// todoItems.addEventntListener("mouseleave", function () {
-			// todoItems.removeClass("active");
-			// todoItems.attr("aria-current", "false");
-			// console.log("unhovered");
-			// });
 		</script>
 		<script>
 			function CreateAlert(type, message) {
