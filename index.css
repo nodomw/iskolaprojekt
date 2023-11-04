@@ -1,0 +1,14 @@
+body {
+	background: linear-gradient(#1d1d1d, #3a3a3a);
+}
+
+.alert {
+	margin: 5px;
+	text-align: center;
+}
+
+/*
+.todo-item:hover {
+	transition: background-color 0.2;
+	background-color: rgb(57, 70, 245);
+} */
