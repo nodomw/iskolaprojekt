@@ -48,7 +48,7 @@
 			crossorigin="anonymous"></script>
 		<script> // event listeners
 			window.addEventListener("mouseover", (event) => {
-				if (event.target.classList.contains("todo-item")) {
+				if (event.target.id == "todo-item") {
 					event.target.classList.add("active");
 					event.target.setAttribute("aria-current", "true");
 					// console.log("hovered");
@@ -57,14 +57,14 @@
 
 			//TODO: make this work
 			window.addEventListener("mouseout", (event) => {
-				if (event.target.classList.contains("todo-item")) {
+				if (event.target.id == "todo-item") {
 					event.target.classList.remove("active");
 					event.target.setAttribute("aria-current", "false");
 					// console.log("unhovered");
 				}
 			});
 			window.addEventListener("click", (event) => {
-				if (event.target.classList.contains("btn-todo")) {
+				if (event.target.id == "btn-todo") {
 					event.target.parentElement.remove();
 					// console.log("clicked");
 				}
@@ -84,7 +84,7 @@
 					return;
 				}
 				// CreateAlert("success", "✅📈")
-				$(".todo-items").append('<li class="list-group-item todo-item">' + todo + '<button class="btn btn-danger btn-close btn-todo" aria-label="Close" role="button"></button> </li>');
+				$(".todo-items").append('<li class="list-group-item" id="todo-item">' + todo + '<button class="btn btn-danger btn-close" id="btn-todo"aria-label="Close" role="button"></button> </li>');
 			}
 
 			function Remove() {
