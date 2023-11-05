@@ -25,9 +25,9 @@
 						<input id="todo" class="form-control" type="text" placeholder="Todo" style="width: 310px;" />
 						<div class="d-xl-flex justify-content-between align-items-xl-center"
 							style="margin-top: 8px; width: 310px;">
-							<button class="btn btn-primary d-xl-flex align-items-xl-center" id="addButton" type="button"
+							<button class="btn btn-primary btn-sm d-xl-flex align-items-xl-center" id="addButton" type="button"
 								onclick="Add()">Add</button>
-							<button class="btn btn-primary d-xl-flex align-items-xl-center" id="removeButton"
+							<button class="btn btn-link fs-3d-xl-flex align-items-xl-center" id="removeButton"
 								type="button" onclick="Remove()">Remove</button>
 						</div>
 					</form>
@@ -72,6 +72,12 @@
 					$(event.target).find("button").toggleClass("btn-success");
 				}
 			});
+			window.addEventListener("keypress", (event) => {
+				if (event.keyCode == 13) {
+					Add();
+					event.preventDefault();
+				}
+			})
 			// TODO: style the close button to be more bootstrap-y
 		</script>
 		<script> // functions n stuff
@@ -81,23 +87,19 @@
 				);
 			}
 			function Add() {
-				var todo = document.getElementById("todo").value;
-				if (todo == "") {
+				let todo = document.getElementById("todo");
+				if (todo.value == "") {
 					CreateAlert("danger", "Please enter a todo");
 					return;
 				}
 				// CreateAlert("success", "✅📈")
-				$(".todo-items").append('<li class="list-group-item" id="todo-item"><button class="btn btn-danger btn-close" id="btn-todo"aria-label="Close" role="button"></button>' + todo + '</li>');
+				$(".todo-items").append('<li class="list-group-item" id="todo-item"><button class="btn btn-danger btn-close" id="btn-todo"aria-label="Close" role="button"></button>' + todo.value + '</li>');
+				todo.value = "";
 			}
 
 			function Remove() {
-				var todo = document.getElementById("todo").value;
-				if (todo == "") {
-					CreateAlert("danger", "Please enter a todo");
-					return;
-				}
 				// CreateAlert("danger", "✅📈")
-				$(".todo-items").find("li:contains('" + todo + "')").remove();
+				$(".todo-items").find("li").remove();
 			}
 		</script>
 	</body>
