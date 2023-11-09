@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 body {
 	background: linear-gradient(#1d1d1d, #3a3a3a);
 }
@@ -19,3 +20,8 @@ body {
 .bg-success {
 	opacity: 0.5;
 }
+.btn {
+	padding: 5px;
+}
+
+#socialsregister .btn {}
