@@ -45,7 +45,7 @@
                                 class="btn btn-link fs-3d-xl-flex align-items-xl-center"
                                 id="removeButton"
                                 type="button"
-                                onclick="Remove()">
+                                onclick="RemoveAll()">
                                 Remove
                             </button>
                         </div>
@@ -73,6 +73,10 @@
             crossorigin="anonymous"></script>
         <script>
             // todo list data store checker
+            let todoStore = JSON.parse(
+                localStorage.getItem(sessionStorage.getItem("todo"))
+            );
+
             try {
                 // get local todo store
                 localStorage.getItem(sessionStorage.getItem("todo"));
@@ -81,8 +85,19 @@
                 console.log(error);
                 CreateAlert("danger", `error loading todo list '${todo}'`);
             }
+
             document.getElementById("title").innerHTML =
                 sessionStorage.getItem("todo");
+
+            // load stores as elements
+            for (let i = 0; i < todoStore.todos.length; i++) {
+                $(".todo-items").append(
+                    CreateEnty(
+                        todoStore.todos[i].text,
+                        todoStore.todos[i].checked //TODO: not being applied for some reason, could be an issue with the function too
+                    )
+                );
+            }
         </script>
         <script>
             // event listeners
@@ -104,17 +119,23 @@
             window.addEventListener("click", (event) => {
                 if (event.target.id == "btn-todo") {
                     event.target.parentElement.remove();
-                    todoStore.todos.find(
+                    let thing = todoStore.todos.find(
                         (element) =>
                             element.text == event.target.parentElement.innerText
                     );
+                    //TODO: figure out how to delete an element from the array
+                    DeleteItem(todoStore.todos, thing);
+                    console.log(todoStore);
+                    UpdateStores();
                 }
                 if (event.target.id == "todo-item") {
                     $(event.target).toggleClass("bg-success");
                     $(event.target).find("button").toggleClass("btn-success");
-                    todoStore.todos.find(
+
+                    thing = todoStore.todos.find(
                         (element) => element.text == event.target.innerText
                     ).checked = event.target.classList.contains("bg-success");
+                    UpdateStores();
                 }
             });
             window.addEventListener("keypress", (event) => {
@@ -126,9 +147,6 @@
             // TODO: style the close button to be more bootstrap-y
         </script>
         <script>
-            let todoStore = JSON.parse(
-                localStorage.getItem(sessionStorage.getItem("todo"))
-            );
             // functions n stuff
             function UpdateStores() {
                 localStorage.setItem(
@@ -136,9 +154,9 @@
                     JSON.stringify(todoStore)
                 );
             }
+
             function Add() {
                 let todo = document.getElementById("todo");
-                let date = new Date();
                 if (todo.value == "") {
                     CreateAlert("danger", "Please enter a todo");
                     return;
@@ -148,18 +166,18 @@
                 todoStore.todos.push({
                     text: todo.value,
                     checked: false,
-                    date: "",
                 });
-                UpdateStores()
-                console.log(todoStore);
-                console.log(localStorage.getItem(sessionStorage.getItem("todo")));
+                UpdateStores();
+                // console.log(todoStore);
+                // console.log(localStorage.getItem(sessionStorage.getItem("todo")));
+
                 // todo.value = "";
             }
 
-            function Remove() {
+            function RemoveAll() {
                 $(".todo-items").find("li").remove();
                 todoStore.todos = [];
-                UpdateStores()
+                UpdateStores();
                 // console.log(todoStore);
             }
         </script>

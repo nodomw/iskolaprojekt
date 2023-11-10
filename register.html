@@ -22,7 +22,13 @@
             class="d-xl-flex flex-column justify-content-xl-center align-items-xl-center"
             style="height: 100vh">
             <div class="card" style="width: 350px">
-                <div class="card-header text-center">new list</div>
+                <!-- <div class="card-header text-center">new list</div> -->
+                <div class="card-header text-center">
+                    <img
+                    src="scrunkly_logo.png"
+                    class="img-thumbnail"
+                    alt="scrunkly todo list logo" />
+                </div>
                 <div class="alerts"></div>
                 <div class="card-body">
                     <form>
@@ -44,20 +50,35 @@
                             type="password"
                             placeholder="repeat secret"
                             style="width: 310px; margin-top: 8px" />
-                        <button
-                            style="width: 310px; margin-top: 8px;"
-                            class="btn btn-primary"
-                            aria-label="create list"
-                            id="Create"
-                            type="button"
-                            onclick="Validate()">
-                            create
-                        </button>
+                        <div class="container" style="width: 310px; margin-top: 8px">
+                            <div class="row">
+                                <button
+                                    class="col btn btn-primary"
+                                    aria-label="create list"
+                                    id="Create"
+                                    type="button"
+                                    onclick="Validate()">
+                                    create
+                                </button>
+                                <button
+                                    class="col btn btn-link"
+                                    aria-label="create list"
+                                    id="Create"
+                                    type="button"
+                                    onclick="window.location.href = 'login.html'">
+                                    access existing
+                                </button>
+                            </div>
+                        </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
         <script>
             window.addEventListener("keypress", (event) => {
                 if (event.keyCode == 13) {
@@ -71,7 +92,10 @@
                 let password = document.getElementById("password").value;
                 let repeatPassword =
                     document.getElementById("repeat-password").value;
-
+                if (todoname == "" || password == "") {
+                    CreateAlert("danger", "please fill out all fields!");
+                    return;
+                }
                 if (password != repeatPassword) {
                     CreateAlert("danger", "secrets do not match!");
                 } else if (password.length > 8) {
