@@ -1,0 +1,16 @@
+{
+	"name": "demo",
+	"secret": "demosecret",
+	"lists": {
+		{
+			"text": "demo list entry 1",
+			"checked": false,
+			"date": // unix timestampt cuz its easier to parse
+		},
+		{
+			"text": "demo list entry 2",
+			"checked": true,
+			"date": // unix timestampt cuz its easier to parse
+		}
+	}
+}
