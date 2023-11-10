@@ -104,10 +104,17 @@
             window.addEventListener("click", (event) => {
                 if (event.target.id == "btn-todo") {
                     event.target.parentElement.remove();
+                    todoStore.todos.find(
+                        (element) =>
+                            element.text == event.target.parentElement.innerText
+                    );
                 }
                 if (event.target.id == "todo-item") {
                     $(event.target).toggleClass("bg-success");
                     $(event.target).find("button").toggleClass("btn-success");
+                    todoStore.todos.find(
+                        (element) => element.text == event.target.innerText
+                    ).checked = event.target.classList.contains("bg-success");
                 }
             });
             window.addEventListener("keypress", (event) => {
@@ -119,33 +126,41 @@
             // TODO: style the close button to be more bootstrap-y
         </script>
         <script>
+            let todoStore = JSON.parse(
+                localStorage.getItem(sessionStorage.getItem("todo"))
+            );
             // functions n stuff
+            function UpdateStores() {
+                localStorage.setItem(
+                    sessionStorage.getItem("todo"),
+                    JSON.stringify(todoStore)
+                );
+            }
             function Add() {
-                let todoStore = JSON.parse(localStorage.getItem(
-                    sessionStorage.getItem("todo")
-                ));
                 let todo = document.getElementById("todo");
                 let date = new Date();
                 if (todo.value == "") {
                     CreateAlert("danger", "Please enter a todo");
                     return;
                 }
-                // CreateAlert("success", "✅📈")
-                $(".todo-items").append(
-                    CreateEnty(todo.value, false)
-                );
+
+                $(".todo-items").append(CreateEnty(todo.value, false));
                 todoStore.todos.push({
                     text: todo.value,
                     checked: false,
                     date: "",
                 });
-                console.log(todoStore.todos);
-                todo.value = "";
+                UpdateStores()
+                console.log(todoStore);
+                console.log(localStorage.getItem(sessionStorage.getItem("todo")));
+                // todo.value = "";
             }
 
             function Remove() {
-                // CreateAlert("danger", "✅📈")
                 $(".todo-items").find("li").remove();
+                todoStore.todos = [];
+                UpdateStores()
+                // console.log(todoStore);
             }
         </script>
     </body>
