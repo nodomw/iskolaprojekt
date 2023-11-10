@@ -14,3 +14,6 @@
 		}
 	}
 }
+
+// going to use sessionstorage to get the currently editing todo list
+// but is going to store them in localstorage

@@ -22,63 +22,37 @@
             class="d-xl-flex flex-column justify-content-xl-center align-items-xl-center"
             style="height: 100vh">
             <div class="card" style="width: 350px">
-                <div class="card-header text-center">Register</div>
+                <div class="card-header text-center">new list</div>
                 <div class="alerts"></div>
                 <div class="card-body">
                     <form>
                         <input
-                            id="email"
+                            id="todo-name"
                             class="form-control"
                             type="username"
-                            placeholder="Username"
+                            placeholder="list name"
                             style="width: 310px" />
                         <input
                             id="password"
                             class="form-control"
                             type="password"
-                            placeholder="Password"
+                            placeholder="secret"
                             style="width: 310px; margin-top: 8px" />
                         <input
                             id="repeat-password"
                             class="form-control"
                             type="password"
-                            placeholder="Repeat password"
+                            placeholder="repeat secret"
                             style="width: 310px; margin-top: 8px" />
-                        <div
-                            class="d-xl-flex justify-content-between row-cols-3 container p-3"
-                            id="socialsregister"
-                            style="margin-top: 8px">
-                            <div
-                                class="d-xl-flex align-items-xl-center col text-center">
-                                <button
-                                    class="btn btn-primary m-auto"
-                                    aria-label="Register with Google"
-                                    id="GoogleRegister"
-                                    type="button">
-                                    <i class="bi-google"></i>
-                                </button>
-                            </div>
-                            <div
-                                class="d-xl-flex align-items-xl-center col text-center">
-                                <button
-                                    class="btn btn-primary m-auto"
-                                    aria-label="Register with LinkedIn"
-                                    id="LinkedinRegister"
-                                    type="button">
-                                    <i class="bi-linkedin"></i>
-                                </button>
-                            </div>
-                            <div
-                                class="d-xl-flex align-items-xl-center col text-center">
-                                <button
-                                    class="btn btn-primary m-auto"
-                                    aria-label="Register"
-                                    id="Register"
-                                    type="button"
-                                    onclick="Validate()">
-                                    <i class="bi-door-open"></i>
-                                </button>
-                            </div>
+                        <button
+                            style="width: 310px; margin-top: 8px;"
+                            class="btn btn-primary"
+                            aria-label="create list"
+                            id="Create"
+                            type="button"
+                            onclick="Validate()">
+                            create
+                        </button>
                         </div>
                     </form>
                 </div>
@@ -93,23 +67,37 @@
         </script>
         <script>
             function Validate() {
-                let email = document.getElementById("email").value;
+                let todoname = document.getElementById("todo-name").value;
                 let password = document.getElementById("password").value;
                 let repeatPassword =
                     document.getElementById("repeat-password").value;
 
                 if (password != repeatPassword) {
-                    CreateAlert("danger", "Passwords do not match!");
+                    CreateAlert("danger", "secrets do not match!");
                 } else if (password.length > 8) {
                     CreateAlert(
                         "danger",
-                        "Password must be at least 8 characters long!"
+                        "secret must be at least 8 characters long!"
                     );
                 } else {
-                    console.log("creating account with credentials:");
-                    console.log(email);
+                    console.log("creating todo list with credentials:");
+                    console.log(todoname);
                     console.log(password);
                     console.log(repeatPassword);
+
+                    // create store logic
+                    if (!localStorage.getItem(todoname)) {
+                        let data = {
+                            password: password,
+                            todos: {},
+                        }
+                        localStorage.setItem(todoname, JSON.stringify(data));
+                        sessionStorage.setItem("todo", todoname);
+                        CreateAlertWithRedirect("success", "list created!", "todo.html");
+                    } else {
+                        CreateAlert("danger", "list with this name already exists!");
+                        return;
+                    }
                 }
             }
         </script>

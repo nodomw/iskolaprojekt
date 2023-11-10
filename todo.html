@@ -19,7 +19,7 @@
             class="d-xl-flex flex-column justify-content-xl-center align-items-xl-center"
             style="height: 100vh">
             <div class="card" style="width: 350px">
-                <div class="card-header text-center">Todo list</div>
+                <div class="card-header text-center" id="title"></div>
                 <div class="alerts">
                     <!-- use da functions brudda -->
                 </div>
@@ -72,6 +72,19 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
         <script>
+            // todo list data store checker
+            try {
+                // get local todo store
+                localStorage.getItem(sessionStorage.getItem("todo"));
+                // console.log(todo);
+            } catch (error) {
+                console.log(error);
+                CreateAlert("danger", `error loading todo list '${todo}'`);
+            }
+            document.getElementById("title").innerHTML =
+                sessionStorage.getItem("todo");
+        </script>
+        <script>
             // event listeners
             window.addEventListener("mouseover", (event) => {
                 if (event.target.id == "todo-item") {
@@ -80,7 +93,6 @@
                     // console.log("hovered");
                 }
             });
-
             //TODO: make this work
             window.addEventListener("mouseout", (event) => {
                 if (event.target.id == "todo-item") {
@@ -109,15 +121,25 @@
         <script>
             // functions n stuff
             function Add() {
+                let todoStore = JSON.parse(localStorage.getItem(
+                    sessionStorage.getItem("todo")
+                ));
                 let todo = document.getElementById("todo");
+                let date = new Date();
                 if (todo.value == "") {
                     CreateAlert("danger", "Please enter a todo");
                     return;
                 }
                 // CreateAlert("success", "✅📈")
                 $(".todo-items").append(
-                    `<li class="list-group-item" id="todo-item"><button class="btn btn-danger btn-close" id="btn-todo"aria-label="Close" role="button"></button>${todo.value}</li>`
+                    CreateEnty(todo.value, false)
                 );
+                todoStore.todos.push({
+                    text: todo.value,
+                    checked: false,
+                    date: "",
+                });
+                console.log(todoStore.todos);
                 todo.value = "";
             }
 
