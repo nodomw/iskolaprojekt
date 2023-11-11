@@ -119,6 +119,8 @@
                     `currently existing lists:\n${lists.join(", ")}`
                 );
             }
+
+			sessionStorage.removeItem("todo"); // reset stores to not cause conflicts
         </script>
     </body>
 </html>
