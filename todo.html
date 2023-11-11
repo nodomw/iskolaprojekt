@@ -16,7 +16,7 @@
 
     <body>
         <div
-            class="d-xl-flex flex-column justify-content-xl-center align-items-xl-center"
+            class="d-flex flex-column justify-content-center align-items-center"
             style="height: 100vh">
             <div class="card" style="width: 350px">
                 <div class="card-header text-center" id="title"></div>
@@ -32,17 +32,17 @@
                             placeholder="Todo"
                             style="width: 310px" />
                         <div
-                            class="d-xl-flex justify-content-between align-items-xl-center"
+                            class="d-flex justify-content-between align-items-center"
                             style="margin-top: 8px; width: 310px">
                             <button
-                                class="btn btn-primary btn-sm d-xl-flex align-items-xl-center"
+                                class="btn btn-primary btn-md"
                                 id="addButton"
                                 type="button"
                                 onclick="Add()">
                                 Add
                             </button>
                             <button
-                                class="btn btn-link fs-3d-xl-flex align-items-xl-center"
+                                class="btn btn-link align-items-end"
                                 id="removeButton"
                                 type="button"
                                 onclick="RemoveAll()">
@@ -71,33 +71,33 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
-        <script>
-            // todo list data store checker
+        <script> // todo list data store checker
+
             let todoStore = JSON.parse(
                 localStorage.getItem(sessionStorage.getItem("todo"))
             );
 
             try {
-                // get local todo store
-                localStorage.getItem(sessionStorage.getItem("todo"));
-                // console.log(todo);
+                for (let i = 0; i < todoStore.todos.length; i++) {
+                    $(".todo-items").append(
+                        CreateEnty(
+                            todoStore.todos[i].text,
+                            todoStore.todos[i].checked
+                        )
+                    );
+                }
             } catch (error) {
                 console.log(error);
-                CreateAlert("danger", `error loading todo list '${todo}'`);
+                CreateAlert(
+                    "danger",
+                    `error loading todo list '${todo}' check console for more information!`
+                );
             }
 
             document.getElementById("title").innerHTML =
                 sessionStorage.getItem("todo");
 
             // load stores as elements
-            for (let i = 0; i < todoStore.todos.length; i++) {
-                $(".todo-items").append(
-                    CreateEnty(
-                        todoStore.todos[i].text,
-                        todoStore.todos[i].checked //TODO: not being applied for some reason, could be an issue with the function too
-                    )
-                );
-            }
         </script>
         <script>
             // event listeners
@@ -105,7 +105,6 @@
                 if (event.target.id == "todo-item") {
                     event.target.classList.add("active");
                     event.target.setAttribute("aria-current", "true");
-                    // console.log("hovered");
                 }
             });
             //TODO: make this work
@@ -113,7 +112,6 @@
                 if (event.target.id == "todo-item") {
                     event.target.classList.remove("active");
                     event.target.setAttribute("aria-current", "false");
-                    // console.log("unhovered");
                 }
             });
             window.addEventListener("click", (event) => {
@@ -135,6 +133,7 @@
                     thing = todoStore.todos.find(
                         (element) => element.text == event.target.innerText
                     ).checked = event.target.classList.contains("bg-success");
+                    console.log(todoStore);
                     UpdateStores();
                 }
             });
@@ -157,28 +156,18 @@
 
             function Add() {
                 let todo = document.getElementById("todo");
-                if (todo.value == "") {
-                    CreateAlert("danger", "Please enter a todo");
-                    return;
-                }
-
                 $(".todo-items").append(CreateEnty(todo.value, false));
                 todoStore.todos.push({
                     text: todo.value,
                     checked: false,
                 });
                 UpdateStores();
-                // console.log(todoStore);
-                // console.log(localStorage.getItem(sessionStorage.getItem("todo")));
-
-                // todo.value = "";
             }
 
             function RemoveAll() {
                 $(".todo-items").find("li").remove();
                 todoStore.todos = [];
                 UpdateStores();
-                // console.log(todoStore);
             }
         </script>
     </body>

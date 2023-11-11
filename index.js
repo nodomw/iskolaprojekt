@@ -4,9 +4,14 @@ function CreateAlert(type, message) {
     );
 }
 
-function CreateEnty(text, checked, date) {
+function CreateEnty(text, checked) {
+    if (text == "") {
+        CreateAlert("danger", "Please enter a todo");
+        return;
+    }
+
     return `<li class="list-group-item ${
-        checked && console.log("checked")
+        checked && "bg-success"
     }" id="todo-item"><button class="btn btn-danger btn-close" id="btn-todo"aria-label="Close" role="button"></button>${text}</li>`;
 }
 
