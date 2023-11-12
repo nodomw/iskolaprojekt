@@ -14,8 +14,8 @@ body {
 	display: grid;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vw;
+    width: 200vw;
+    height: 200vh;
     background-size: contain;
 	background-color: transparent;
 	background-size: 40px 40px;
