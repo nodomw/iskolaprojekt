@@ -15,12 +15,6 @@ function CreateEnty(text, checked) {
     }" id="todo-item"><button class="btn btn-danger btn-close" id="btn-todo"aria-label="Close" role="button"></button>${text}</li>`;
 }
 
-function DeleteItem(array, value) {
-    return array.filter((element) => {
-        return element != value;
-    });
-}
-
 function CreateAlertWithRedirect(type, message, redirect) {
     CreateAlert(type, message);
     setTimeout(() => {
