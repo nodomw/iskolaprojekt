@@ -4,7 +4,7 @@ function CreateAlert(type, message) {
     );
 }
 
-function CreateEnty(text, checked) {
+function CreateEntry(text, checked) {
     if (text == "") {
         CreateAlert("danger", "Please enter a todo");
         return;
