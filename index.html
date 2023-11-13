@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScrunklyTodoList</title>
+    
+    <!-- LINKS -->
+    <link rel="icon" href="img/scrunkly_logo_smallscale.svg" type="image/icon type">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!-- SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/sidebar.js"></script>
+    
+
+<body id="body-pd">
+    
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i>
+                <span class="nav_logo-name"></span>
+                </a>
+                <div class="nav_list">
+                    <a href="#" class="nav_link active">
+                        <i class='bi bi-ui-checks-grid nav_icon'></i>
+                        <span class="nav_name">Grid</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i class='bi bi-image nav_icon'></i>
+                        <span class="nav_name">Upload Image</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i class='bi bi-calendar-event nav_icon'></i>
+                        <span class="nav_name">Calendar</span>
+                    </a>
+                </div>
+            </div>
+            <a href="#" class="nav_link">
+                <i class='bi bi-gear nav_icon'></i>
+                <span class="nav_name">Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- BACKGROUND PLANE -->
+        <div class="plane" id="baseplate">
+             <div class="note" id="dragbox">
+
+             </div>
+        </div>
+   
+</body>
+<script src="js/drag.js"></script>
+<script src="js/zoom.js"></script>
+</html>
