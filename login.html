@@ -13,15 +13,14 @@
         <script src="js/index.js"></script>
         <link rel="stylesheet" href="index.css" />
     </head>
-
     <body>
         <div
             class="d-flex flex-column justify-content-center align-items-center"
-            style="height: 100vh; width: 100vw;">
+            style="height: 100vh; width: 100vw">
             <div class="card" style="width: 350px">
                 <div class="card-header text-center">
                     <img
-                        src="scrunkly_logo.png"
+                        src="img/scrunkly_logo_HQ.png"
                         class="img-thumbnail"
                         alt="scrunkly todo list logo" />
                 </div>
@@ -30,20 +29,20 @@
                     <form>
                         <input
                             id="todo-name"
-                            class="form-control"
+                            class="form-control focus-ring py-1 px-2 text-decoration-none border rounded-2"
                             type="username"
                             placeholder="list name"
                             style="width: 310px" />
                         <input
                             id="password"
-                            class="form-control"
+                            class="form-control focus-ring py-1 px-2 text-decoration-none border rounded-2"
                             type="password"
                             placeholder="secret"
                             style="width: 310px; margin-top: 8px" />
                         <div class="container">
                             <div
                                 class="row"
-                                style="width: 310px; margin-top: 8px;">
+                                style="width: 310px; margin-top: 8px">
                                 <button
                                     class="col-md-6 btn btn-primary"
                                     id="loginButton"
@@ -64,8 +63,8 @@
                                     id="showListsButton"
                                     type="button"
                                     onclick="window.location.href = 'register.html'">
-                                    new
                                 </button>
+                                <!-- <i class="btn btn-outline-success bi-check" id="btn-check" aria-label="Check" role="button"></i> -->
                             </div>
                         </div>
                     </form>
@@ -87,10 +86,10 @@
             function Validate() {
                 let todoname = document.getElementById("todo-name").value;
                 let password = document.getElementById("password").value;
-				if (todoname == "" || password == "") {
-					CreateAlert("danger", "please fill out all fields");
-					return;
-				}
+                if (todoname == "" || password == "") {
+                    CreateAlert("danger", "please fill out all fields");
+                    return;
+                }
                 if (!localStorage.getItem(todoname)) {
                     CreateAlert("danger", "list does not exist");
                 } else {
@@ -113,14 +112,15 @@
                 for (let i = 0; i < localStorage.length; i++) {
                     lists.push(localStorage.key(i));
                 }
-
                 CreateAlert(
                     "info",
-                    `currently existing lists:\n${lists.join(", ")}`
+                    lists.length < 1
+                    ? "no lists exist! create a new one"
+                    : `currently existing lists:\n${lists.join(", ")}`
                 );
             }
 
-			sessionStorage.removeItem("todo"); // reset stores to not cause conflicts
+            sessionStorage.removeItem("todo"); // reset stores to not cause conflicts
         </script>
     </body>
 </html>

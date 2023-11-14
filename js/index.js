@@ -1,6 +1,6 @@
 function CreateAlert(type, message) {
     $(".alerts").html(
-        `<div class="alert alert-${type} alert-dismissible fade show" role="alert">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+        `<div class="alert alert-${type} alert-dismissible fade show" role="alert">${message}<div type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div></div>`
     );
 }
 
@@ -12,7 +12,8 @@ function CreateEntry(text, checked) {
 
     return `<li class="list-group-item ${
         checked && "bg-success"
-    }" id="todo-item"><button class="btn btn-danger btn-close" id="btn-todo"aria-label="Close" role="button"></button>${text}</li>`;
+    }" id="todo-item"><div class="btn btn-close" id="btn-todo" aria-label="Close" role="button"></div><i class="displaynone bi-check text-success" id="btn-check" aria-label="Check" role="button">
+    </i>${text}</li>`;
 }
 
 function CreateAlertWithRedirect(type, message, redirect) {

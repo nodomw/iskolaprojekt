@@ -4,6 +4,10 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Edgy game</title>
+        <link
+            rel="shortcut icon"
+            href="img/scrunkly_516.png"
+            type="image/x-icon" />
         <script src="js/index.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link
@@ -25,32 +29,34 @@
                 <!-- <div class="card-header text-center">new list</div> -->
                 <div class="card-header text-center">
                     <img
-                    src="scrunkly_logo.png"
-                    class="img-thumbnail"
-                    alt="scrunkly todo list logo" />
+                        src="img/scrunkly_logo_HQ.png"
+                        class="img-thumbnail"
+                        alt="scrunkly todo list logo" />
                 </div>
                 <div class="alerts"></div>
                 <div class="card-body">
                     <form>
                         <input
                             id="todo-name"
-                            class="form-control"
+                            class="form-control focus-ring py-1 px-2 text-decoration-none border rounded-2"
                             type="username"
                             placeholder="list name"
                             style="width: 310px" />
                         <input
                             id="password"
-                            class="form-control"
+                            class="form-control focus-ring py-1 px-2 text-decoration-none border rounded-2"
                             type="password"
                             placeholder="secret"
                             style="width: 310px; margin-top: 8px" />
                         <input
                             id="repeat-password"
-                            class="form-control"
+                            class="form-control focus-ring py-1 px-2 text-decoration-none border rounded-2"
                             type="password"
                             placeholder="repeat secret"
                             style="width: 310px; margin-top: 8px" />
-                        <div class="container" style="width: 310px; margin-top: 8px">
+                        <div
+                            class="container"
+                            style="width: 310px; margin-top: 8px">
                             <div class="row">
                                 <button
                                     class="col btn btn-primary"
@@ -68,8 +74,8 @@
                                     onclick="window.location.href = 'login.html'">
                                     access existing
                                 </button>
+
                             </div>
-                        </div>
                         </div>
                     </form>
                 </div>
@@ -109,17 +115,24 @@
                     console.log(password);
                     console.log(repeatPassword);
 
+                    let data = JSON.stringify({
+                        password: password,
+                        todos: "",
+                    });
                     // create store logic
                     if (!localStorage.getItem(todoname)) {
-                        let data = {
-                            password: password,
-                            todos: {},
-                        }
-                        localStorage.setItem(todoname, JSON.stringify(data));
+                        localStorage.setItem(todoname, data);
                         sessionStorage.setItem("todo", todoname);
-                        CreateAlertWithRedirect("success", "list created!", "todo.html");
+                        CreateAlertWithRedirect(
+                            "success",
+                            "list created!",
+                            "todo.html"
+                        );
                     } else {
-                        CreateAlert("danger", "list with this name already exists!");
+                        CreateAlert(
+                            "danger",
+                            "list with this name already exists!"
+                        );
                         return;
                     }
                 }
