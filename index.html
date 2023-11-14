@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,47 +22,25 @@
     <script src="js/sidebar.js"></script>
     
 
-<body id="body-pd">
-    
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-    </header>
-    <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div>
-                <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i>
-                <span class="nav_logo-name"></span>
-                </a>
-                <div class="nav_list">
-                    <a href="#" class="nav_link active">
-                        <i class='bi bi-ui-checks-grid nav_icon'></i>
-                        <span class="nav_name">Grid</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <i class='bi bi-image nav_icon'></i>
-                        <span class="nav_name">Upload Image</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <i class='bi bi-calendar-event nav_icon'></i>
-                        <span class="nav_name">Calendar</span>
-                    </a>
-                </div>
-            </div>
-            <a href="#" class="nav_link">
-                <i class='bi bi-gear nav_icon'></i>
-                <span class="nav_name">Settings</span>
-            </a>
-        </nav>
-    </div>
-
-    <!-- BACKGROUND PLANE -->
-        <div class="plane" id="baseplate">
-             <div class="note" id="dragbox">
-
-             </div>
+<body>
+    <nav class="navbar p-2">
+        <div class="container-fluid d-flex align-items-center">
+            <img src="img/scrunkly_logo_HQ.png" alt="navlogo" width="120vw">
+            <button href="register.html" type="button" class="btn btn-danger">Sign In</button>
         </div>
-   
+      </nav>
+      
+      <div class="homepage_container bg-transparent my-5 mx-auto row-3 py-2">
+        <div class="text-center">
+            <h1 class="title">Simple online todo list</h1>
+        </div>
+        <div class="text-center">
+            <p class="secondary_title">a quick and easy way to manage tasks</p>
+        </div>
+        
+        <div class="getstarted container-fluid d-flex justify-content-center my-5 mx-auto">
+            <button href="register.html" type="button" class="getstarted_btn px-3 btn btn-danger">Get Started</button>
+        </div>
+      </div>
 </body>
-<script src="js/drag.js"></script>
-<script src="js/zoom.js"></script>
 </html>
