@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
-* {
+/* * {
     font-family: "Montserrat", sans-serif;
-}
+} */
 
 body {
     --dot-bg: #0c0c0f;
@@ -45,9 +45,9 @@ li.bg-success {
 }
 
 .btn {
-    padding: 5px;
+    /* padding: 5px; */
     text-align: center;
-    font-size: 20px;
+    /* font-size: 20px; */
 }
 
 .btn-primary {
