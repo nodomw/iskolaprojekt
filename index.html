@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScrunklyTodoList</title>
-    
+    <title>scrunkly todo list</title>
+
     <!-- LINKS -->
     <link rel="icon" href="img/scrunkly_logo_smallscale.svg" type="image/icon type">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -19,27 +19,26 @@
 
     <!-- SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="js/sidebar.js"></script>
-    
+    <script src="js/index.js"></script>
 
 <body>
     <nav class="navbar p-2">
         <div class="container-fluid d-flex align-items-center">
-            <img src="img/scrunkly_logo_HQ.png" alt="navlogo" width="120vw">
-            <button href="register.html" type="button" class="btn btn-danger">Sign In</button>
+            <img src="img/scrunkly_logo_HQ.png" alt="navlogo" class="img-fluid" width="120vw">
+            <button onclick="window.location.href = 'register.html'" type="button" class="btn btn-danger px-2">create new</button>
         </div>
       </nav>
-      
+
       <div class="homepage_container bg-transparent my-5 mx-auto row-3 py-2">
         <div class="text-center">
-            <h1 class="title">Simple online todo list</h1>
+            <h1 class="title">simple online todo list</h1>
         </div>
         <div class="text-center">
             <p class="secondary_title">a quick and easy way to manage tasks</p>
         </div>
-        
+
         <div class="getstarted container-fluid d-flex justify-content-center my-5 mx-auto">
-            <button href="register.html" type="button" class="getstarted_btn px-3 btn btn-danger">Get Started</button>
+            <button onclick="window.location.href = 'login.html'"type="button" class="getstarted_btn px-3 btn btn-danger">get started</button>
         </div>
       </div>
 </body>
