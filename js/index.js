@@ -12,7 +12,7 @@ function CreateEntry(text, checked) {
 
     return `<li class="list-group-item ${
         checked && "bg-success"
-    }" id="todo-item"><div class="btn btn-close" id="btn-todo" aria-label="Close" role="button"></div><i class="displaynone bi-check text-success" id="btn-check" aria-label="Check" role="button">
+    }" id="todo-item"><div class="btn btn-close" id="btn-todo" aria-label="Close" role="button"></div><i class="displaynone bi-check text-success" id="btn-check" aria-label="Check">
     </i>${text}</li>`;
 }
 
