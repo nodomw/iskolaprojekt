@@ -49,11 +49,18 @@
                                 Add
                             </button>
                             <button
-                                class="btn btn-link align-items-end"
+                                class="btn btn-link text-danger align-items-end"
+                                id="backButton"
+                                type="button"
+                                onclick="Redirect('index.html')">
+                                go back
+                            </button>
+                            <button
+                                class="btn btn-link text-danger align-items-end"
                                 id="removeButton"
                                 type="button"
                                 onclick="RemoveAll()">
-                                Remove
+                                remove
                             </button>
                         </div>
                     </form>
@@ -65,10 +72,6 @@
                             overflow-y: scroll;
                         ">
                         <ul class="list-group todo-items">
-                            <!-- enter stuff here via the functions  -->
-                            <!-- <li class="list-group-item todo-item">test
-								</button class="btn btn-danger btn-close" aria-label="Close" role="button">
-							</li> -->
                         </ul>
                     </div>
                 </div>

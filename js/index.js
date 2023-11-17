@@ -23,6 +23,12 @@ function CreateAlertWithRedirect(type, message, redirect) {
     }, 1500);
 }
 
+function Redirect(redirect) {
+    setTimeout(() => {
+        window.location.href = redirect;
+    }, 1500);
+}
+
 // for (let index = 0; index < localStorage.length; index++) {
 //     console.log(localStorage.key(index));
 // }
