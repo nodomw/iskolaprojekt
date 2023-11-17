@@ -26,7 +26,7 @@ function CreateAlertWithRedirect(type, message, redirect) {
 function Redirect(redirect) {
     setTimeout(() => {
         window.location.href = redirect;
-    }, 1500);
+    }, 500);
 }
 
 // for (let index = 0; index < localStorage.length; index++) {
